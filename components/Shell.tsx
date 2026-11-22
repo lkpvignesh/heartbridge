@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight, ChevronDown, HeartPulse, RotateCcw } from "lucide-react";
+import { ArrowRight, ChevronDown, RotateCcw } from "lucide-react";
+import { Logo } from "./Logo";
 import { CASES, CaseId, PersonaId } from "@/lib/data";
 import { PRESETS, nextStep } from "@/lib/flow";
 import { useStore } from "@/lib/store";
@@ -18,7 +19,7 @@ function TopBar() {
   return (
     <header className="z-40 lg:sticky lg:top-0 border-b border-line bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-[1320px] flex-wrap items-center gap-x-6 gap-y-3 px-5 py-3 lg:px-8">
-        <a href="/" className="flex items-center gap-2 font-display text-lg font-semibold"><HeartPulse className="text-accent-500" size={22} />HeartBridge</a>
+        <a href="/" className="flex items-center"><Logo size={30} /></a>
         <div className="flex items-center gap-1 rounded-xl bg-canvas p-1">
           {(Object.keys(CASES) as CaseId[]).map(id => (
             <button key={id} onClick={() => setCase(id)} className={cx("rounded-lg px-3 py-1.5 text-sm transition", caseId === id ? "bg-white font-medium shadow-sm" : "text-muted hover:text-ink")}>

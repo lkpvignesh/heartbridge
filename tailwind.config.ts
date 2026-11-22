@@ -5,9 +5,9 @@ const config: Config = {
     extend: {
       fontFamily: { sans: ["var(--font-inter)", "system-ui", "sans-serif"], display: ["var(--font-display)", "var(--font-inter)", "sans-serif"] },
       colors: {
-        ink: "#18211f", muted: "#66716d", line: "#e6e9e8", canvas: "#f8f9f9",
-        brand: { 50: "#eef6f4", 100: "#d9ebe6", 500: "#2a7a6c", 600: "#1f6458", 700: "#184f46", 900: "#0f332d" },
-        accent: { 50: "#fdf4ec", 100: "#fbe6d2", 500: "#d06a1f", 600: "#b5581a" },
+        ink: "#102A35", muted: "#566B6F", line: "#E5ECEA", canvas: "#F7F5F0",
+        brand: { 50: "#EDF5F3", 100: "#D6E9E5", 500: "#2A8C83", 600: "#1F7A72", 700: "#18635C", 900: "#102A35" },
+        accent: { 50: "#FDF0EC", 100: "#FADBD2", 500: "#E4573D", 600: "#C3402A" }, saff: { 100: "#FCEBD0", 500: "#F2A93B" },
         flag: { 50: "#fdf0ee", 500: "#b83a2e" }
       },
       boxShadow: { soft: "0 1px 2px rgba(16,24,22,.04), 0 4px 16px rgba(16,24,22,.04)" }

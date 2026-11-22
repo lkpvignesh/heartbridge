@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 
 const personas = [
   ["Patient", "Onboards, consents to record pulls, approves the plan and price, applies for the visa, checks in, reviews the bill."],
@@ -14,7 +15,8 @@ const cases = [
 export default function Landing() {
   return (
     <main className="mx-auto max-w-5xl px-5 py-16 lg:py-24">
-      <div className="text-sm font-medium text-accent-600">HeartBridge · connected prototype</div>
+      <Logo size={44} text="text-2xl" />
+      <div className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-accent-600">Heart care, across borders · connected prototype</div>
       <h1 className="mt-3 max-w-3xl text-4xl font-semibold leading-[1.1] sm:text-5xl">Cardiac surgery in India, with the US care around it handled.</h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">One case record shared by the patient, their family, the US cardiologist and the Indian care team. Each step waits for the right person; switch personas to move the case forward.</p>
       <Link href="/demo" className="mt-8 inline-flex h-12 items-center rounded-xl bg-brand-700 px-6 font-medium text-white hover:bg-brand-900">Open the prototype</Link>

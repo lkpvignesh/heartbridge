@@ -322,7 +322,7 @@ export function ConsentList({ editable }: { editable: boolean }) {
     <div className="divide-y divide-line">
       {items.map(([k, t, d]) => (
         <label key={k} className="flex cursor-pointer items-start gap-4 py-4">
-          <input type="checkbox" className="mt-1 h-5 w-5 accent-[#184f46]" checked={s.consents[k]} disabled={!editable}
+          <input type="checkbox" className="mt-1 h-5 w-5 accent-[#1F7A72]" checked={s.consents[k]} disabled={!editable}
             onChange={e => act("patient", `${e.target.checked ? "Granted" : "Withdrew"} consent: ${t}`, x => { x.consents[k] = e.target.checked; })} />
           <span><span className="block font-medium">{t}</span><span className="text-sm text-muted">{d}</span></span>
         </label>))}

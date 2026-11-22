@@ -2,11 +2,14 @@ import { jsPDF } from "jspdf";
 import { CASES, CaseId, EPISODE, FX, HOSPITALS, MEDS, QUOTE, QUOTE_HIGH, QUOTE_LOW, fmtDate } from "../data";
 import { CaseState, billedTotal } from "../flow";
 import { followUpLines } from "./x12";
+import { LOGO_PNG } from "./logo";
 
 const inrP = (v: number) => "INR " + Math.round(v).toLocaleString("en-IN");
 const usdP = (v: number) => "USD " + Math.round(v).toLocaleString("en-US");
-const TEAL: [number, number, number] = [24, 79, 70];
-const MUTED: [number, number, number] = [102, 113, 109];
+const TEAL: [number, number, number] = [31, 122, 114];
+const MUTED: [number, number, number] = [86, 107, 111];
+const CORAL: [number, number, number] = [195, 64, 42];
+const INK: [number, number, number] = [16, 42, 53];
 
 class Doc {
   pdf = new jsPDF({ unit: "pt", format: "letter" });
@@ -14,11 +17,14 @@ class Doc {
   W = 612; M = 54;
   constructor(title: string, issuer: string, sub?: string) {
     const p = this.pdf;
-    p.setFillColor(...TEAL); p.rect(0, 0, this.W, 6, "F");
-    p.setFont("helvetica", "bold"); p.setFontSize(10); p.setTextColor(...TEAL); p.text(issuer, this.M, 34);
-    p.setFont("helvetica", "normal"); p.setTextColor(...MUTED); p.setFontSize(8.5); p.text("Generated " + new Date().toLocaleString("en-US") + " · DEMO DOCUMENT · fictional patient data", this.M, 47);
-    p.setTextColor(20, 30, 28); p.setFont("helvetica", "bold"); p.setFontSize(18); p.text(title, this.M, 76);
-    this.y = 92;
+    p.setFillColor(...TEAL); p.rect(0, 0, this.W, 6, "F"); p.setFillColor(228, 87, 61); p.rect(0, 0, 120, 6, "F");
+    p.addImage(LOGO_PNG, "PNG", this.M, 17, 22, 22);
+    p.setFont("helvetica", "bold"); p.setFontSize(13); p.setTextColor(...CORAL); p.text("Heart", this.M + 28, 33);
+    const hw = p.getTextWidth("Heart"); p.setTextColor(...INK); p.text("Bridge", this.M + 28 + hw, 33);
+    p.setFont("helvetica", "bold"); p.setFontSize(9.5); p.setTextColor(...TEAL); p.text(issuer, this.W - this.M, 33, { align: "right" });
+    p.setFont("helvetica", "normal"); p.setTextColor(...MUTED); p.setFontSize(8.5); p.text("Generated " + new Date().toLocaleString("en-US") + " · DEMO DOCUMENT · fictional patient data", this.M, 52);
+    p.setTextColor(20, 30, 28); p.setFont("helvetica", "bold"); p.setFontSize(18); p.text(title, this.M, 80);
+    this.y = 96;
     if (sub) { p.setFont("helvetica", "normal"); p.setFontSize(10); p.setTextColor(...MUTED); this.wrap(sub, 10); }
     this.y += 6; p.setDrawColor(225, 230, 228); p.line(this.M, this.y, this.W - this.M, this.y); this.y += 18;
   }
